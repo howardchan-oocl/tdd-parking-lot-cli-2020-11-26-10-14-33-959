@@ -14,7 +14,7 @@ public class PackingLot {
 
     public Ticket park(Car car) throws NotEnoughPositionException {
         if (capacity - ticketCarMap.size() <= 0) {
-            return null;
+            throw new NotEnoughPositionException();
         }
         Ticket ticket = new Ticket();
         ticketCarMap.put(ticket, car);

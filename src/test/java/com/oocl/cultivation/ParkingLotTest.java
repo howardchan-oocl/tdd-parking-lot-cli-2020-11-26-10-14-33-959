@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class ParkingBoyTest {
+class ParkingLotTest {
     @Test
     void should_return_ticket_when_pack_a_car_given_parkingLot_with_capacity() {
         //given

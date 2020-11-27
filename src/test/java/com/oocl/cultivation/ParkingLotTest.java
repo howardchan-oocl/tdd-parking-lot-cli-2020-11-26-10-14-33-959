@@ -59,4 +59,20 @@ class ParkingLotTest {
         //then
         assertNull(expected);
     }
+
+    @Test
+    void should_return_null_when_fetch_a_car_given_a_used_ticket_and_parkingLot_with_that_car() {
+        //given
+        PackingLot packingLot = new PackingLot(1);
+        Car car = new Car();
+        Ticket ticket = packingLot.park(car);
+
+
+        //when
+        Car expected = packingLot.fetch(ticket);
+        expected = packingLot.fetch(ticket);
+
+        //then
+        assertNull(expected);
+    }
 }

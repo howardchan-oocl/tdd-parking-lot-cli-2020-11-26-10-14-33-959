@@ -17,11 +17,11 @@ public class PackingLot {
             return null;
         }
         Ticket ticket = new Ticket();
-        ticketCarMap.put(ticket,car);
+        ticketCarMap.put(ticket, car);
         return ticket;
     }
 
     public Car fetch(Ticket ticket) {
-        return null;
+        return ticketCarMap.remove(ticket);
     }
 }

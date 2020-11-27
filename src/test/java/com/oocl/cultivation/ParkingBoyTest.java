@@ -30,9 +30,9 @@ public class ParkingBoyTest {
         List<Car> cars = new ArrayList<>();
 
         //when
-        List<Ticket> ticket = packingBoy.park(cars);
+        List<Ticket> tickets = packingBoy.park(cars);
 
         //then
-        assertNotNull(ticket);
+        assertNotNull(tickets);
     }
 }

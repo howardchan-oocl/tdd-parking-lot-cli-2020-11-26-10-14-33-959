@@ -1,6 +1,5 @@
 package com.oocl.cultivation;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,11 +10,11 @@ public class ParkingBoy {
         this.packingLot = packingLot;
     }
 
-    public Ticket park(Car car) {
+    public Ticket park(Car car) throws NotEnoughPositionException {
         return packingLot.park(car);
     }
 
-    public List<Ticket> park(List<Car> cars) {
-        return cars.stream().map(this::park).collect(Collectors.toList());
-    }
+//    public List<Ticket> park(List<Car> cars){
+//        return cars.stream().map(car -> {park(car)}).collect(Collectors.toList());
+//    }
 }

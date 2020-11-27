@@ -12,7 +12,7 @@ public class PackingLot {
         ticketCarMap = new HashMap<>();
     }
 
-    public Ticket park(Car car) {
+    public Ticket park(Car car) throws NotEnoughPositionException {
         if (capacity - ticketCarMap.size() <= 0) {
             return null;
         }

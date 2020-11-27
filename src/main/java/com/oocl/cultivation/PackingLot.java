@@ -21,7 +21,10 @@ public class PackingLot {
         return ticket;
     }
 
-    public Car fetch(Ticket ticket) {
+    public Car fetch(Ticket ticket) throws UnrecognizedParkingTicketException {
+        if (!ticketCarMap.containsKey(ticket)) {
+            throw new UnrecognizedParkingTicketException();
+        }
         return ticketCarMap.remove(ticket);
     }
 }

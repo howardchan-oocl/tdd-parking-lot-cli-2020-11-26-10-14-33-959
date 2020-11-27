@@ -2,9 +2,6 @@ package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingBoyTest {
@@ -46,10 +43,10 @@ public class ParkingBoyTest {
         ParkingBoy packingBoy = new ParkingBoy(packingLot);
 
         //when
-        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class,()-> packingBoy.park(new Car()));
+        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> packingBoy.park(new Car()));
 
         //then
-        assertEquals("Not Enough Position",notEnoughPositionException.getMessage());
+        assertEquals("Not Enough Position", notEnoughPositionException.getMessage());
     }
 
     @Test
@@ -59,9 +56,9 @@ public class ParkingBoyTest {
         ParkingBoy packingBoy = new ParkingBoy(packingLot);
 
         //when
-        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class,()-> packingBoy.fetch(new Ticket()));
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, () -> packingBoy.fetch(new Ticket()));
 
         //then
-        assertEquals("Unrecognized_Parking_Ticket",unrecognizedParkingTicketException.getMessage());
+        assertEquals("Unrecognized Parking Ticket", unrecognizedParkingTicketException.getMessage());
     }
 }

@@ -19,19 +19,19 @@ class ParkingLotTest {
     }
 
     @Test
-    void should_return_null_when_pack_a_car_given_parkingLot_with_not_enough_capacity() throws NotEnoughPositionException {
+    void should_return_null_when_pack_a_car_given_parkingLot_with_not_enough_capacity() {
         //given
         PackingLot packingLot = new PackingLot(0);
 
         //when
-        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class,()-> packingLot.park(new Car()));
+        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> packingLot.park(new Car()));
 
         //then
-        assertEquals("Not Enough Position",notEnoughPositionException.getMessage());
+        assertEquals("Not Enough Position", notEnoughPositionException.getMessage());
     }
 
     @Test
-    void should_return_car_when_fetch_a_car_given_a_non_used_ticket_and_parkingLot_with_that_car() throws NotEnoughPositionException {
+    void should_return_car_when_fetch_a_car_given_a_non_used_ticket_and_parkingLot_with_that_car() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
         PackingLot packingLot = new PackingLot(1);
         Car actual = new Car();
@@ -41,24 +41,24 @@ class ParkingLotTest {
         Car expected = packingLot.fetch(ticket);
 
         //then
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void should_return_null_when_fetch_a_car_given_a_wrong_ticket_and_parkingLot_with_that_car() throws NotEnoughPositionException {
+    void should_return_null_when_fetch_a_car_given_a_wrong_ticket_and_parkingLot_with_that_car() {
         //given
         PackingLot packingLot = new PackingLot(1);
         Ticket ticket = new Ticket();
 
         //when
-        Car expected = packingLot.fetch(ticket);
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, () -> packingLot.fetch(new Ticket()));
 
         //then
-        assertNull(expected);
+        assertEquals("Unrecognized Parking Ticket", unrecognizedParkingTicketException.getMessage());
     }
 
     @Test
-    void should_return_null_when_fetch_a_car_given_a_used_ticket_and_parkingLot_with_that_car() throws NotEnoughPositionException {
+    void should_return_null_when_fetch_a_car_given_a_used_ticket_and_parkingLot_with_that_car() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
         PackingLot packingLot = new PackingLot(1);
         Car car = new Car();
@@ -67,10 +67,11 @@ class ParkingLotTest {
 
         //when
         Car expected = packingLot.fetch(ticket);
-        expected = packingLot.fetch(ticket);
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, () -> packingLot.fetch(new Ticket()));
+
 
         //then
-        assertNull(expected);
+        assertEquals("Unrecognized Parking Ticket", unrecognizedParkingTicketException.getMessage());
     }
 }
 

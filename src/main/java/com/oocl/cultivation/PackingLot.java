@@ -20,4 +20,8 @@ public class PackingLot {
         ticketCarMap.put(ticket,car);
         return ticket;
     }
+
+    public Car fetch(Ticket ticket) {
+        return null;
+    }
 }

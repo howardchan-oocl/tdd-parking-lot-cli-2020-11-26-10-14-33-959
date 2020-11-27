@@ -14,6 +14,10 @@ public class ParkingBoy {
         return packingLot.park(car);
     }
 
+    public Car fetch(Ticket ticket) {
+        return packingLot.fetch(ticket);
+    }
+
 //    public List<Ticket> park(List<Car> cars){
 //        return cars.stream().map(car -> {park(car)}).collect(Collectors.toList());
 //    }

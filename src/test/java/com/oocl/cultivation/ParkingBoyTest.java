@@ -51,4 +51,17 @@ public class ParkingBoyTest {
         //then
         assertEquals("Not Enough Position",notEnoughPositionException.getMessage());
     }
+
+    @Test
+    void should_throw_Unrecognized_parking_ticket_exception_when_fetch_a_car_given_a_wrong_ticket() {
+        //given
+        PackingLot packingLot = new PackingLot(0);
+        ParkingBoy packingBoy = new ParkingBoy(packingLot);
+
+        //when
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class,()-> packingBoy.fetch(new Ticket()));
+
+        //then
+        assertEquals("Unrecognized_Parking_Ticket",unrecognizedParkingTicketException.getMessage());
+    }
 }

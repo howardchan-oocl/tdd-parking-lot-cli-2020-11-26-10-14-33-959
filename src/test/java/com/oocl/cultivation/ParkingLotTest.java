@@ -44,4 +44,19 @@ class ParkingLotTest {
         //then
         assertEquals(expected,actual);
     }
+
+    @Test
+    void should_return_null_when_fetch_a_car_given_a_wrong_ticket_and_parkingLot_with_that_car() {
+        //given
+        PackingLot packingLot = new PackingLot(1);
+        Car car = new Car();
+        Ticket ticket1 = packingLot.park(car);
+        Ticket ticket2 = new Ticket();
+
+        //when
+        Car expected = packingLot.fetch(ticket2);
+
+        //then
+        assertNull(expected);
+    }
 }

@@ -45,7 +45,7 @@ public class SmartParkingBoyTest {
     }
 
     @Test
-    void should_return_a_correct_car_when_call_fetch_car() throws NotEnoughPositionException {
+    void should_return_a_correct_car_when_call_fetch_car() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
         List<ParkingLot> parkingLots = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot(0);

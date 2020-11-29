@@ -72,10 +72,10 @@ public class SmartParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(1);
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        NotThatCleverParkingBoy notThatCleverParkingBoy = new NotThatCleverParkingBoy(parkingLots);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
 
         //when
-        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, () -> notThatCleverParkingBoy.fetch(new Ticket()));
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, () -> smartParkingBoy.fetch(new Ticket()));
 
         //then
         assertEquals("Unrecognized Parking Ticket", unrecognizedParkingTicketException.getMessage());

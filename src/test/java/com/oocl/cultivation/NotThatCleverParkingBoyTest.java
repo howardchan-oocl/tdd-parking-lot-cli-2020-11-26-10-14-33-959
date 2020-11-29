@@ -25,4 +25,22 @@ public class NotThatCleverParkingBoyTest {
         //then
         assertNotNull(ticket);
     }
+
+    @Test
+    void should_throw_NotEnoughPositionException_when_call_park_car_with_no_parking_lot_with_enough_position() throws NotEnoughPositionException {
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot(0);
+        ParkingLot parkingLot2 = new ParkingLot(0);
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        NotThatCleverParkingBoy notThatCleverParkingBoy = new NotThatCleverParkingBoy(parkingLots);
+        Car car = new Car();
+
+        //when
+        NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> notThatCleverParkingBoy.park(car));
+
+        //then
+        assertEquals("Not Enough Position", notEnoughPositionException.getMessage());
+    }
 }

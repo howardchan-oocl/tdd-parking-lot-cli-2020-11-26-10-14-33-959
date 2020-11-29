@@ -8,8 +8,8 @@ public class ParkingBoyTest {
     @Test
     void should_return_ticket_when_call_park_of_parking_lot_given_parkingLot_with_capacity() throws NotEnoughPositionException {
         //given
-        PackingLot packingLot = new PackingLot(1);
-        ParkingBoy packingBoy = new ParkingBoy(packingLot);
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingBoy packingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
 
         //when
@@ -22,8 +22,8 @@ public class ParkingBoyTest {
     @Test
     void should_return_tickets_when_park_multiple_car_given_parkingLot_with_capacity() throws NotEnoughPositionException {
         //given
-        PackingLot packingLot = new PackingLot(2);
-        ParkingBoy packingBoy = new ParkingBoy(packingLot);
+        ParkingLot parkingLot = new ParkingLot(2);
+        ParkingBoy packingBoy = new ParkingBoy(parkingLot);
         Car car1 = new Car();
         Car car2 = new Car();
 
@@ -39,8 +39,8 @@ public class ParkingBoyTest {
     @Test
     void should_throw_not_enough_position_exception_when_park_a_car_given_parkingLot_with_not_enough_capacity() {
         //given
-        PackingLot packingLot = new PackingLot(0);
-        ParkingBoy packingBoy = new ParkingBoy(packingLot);
+        ParkingLot parkingLot = new ParkingLot(0);
+        ParkingBoy packingBoy = new ParkingBoy(parkingLot);
 
         //when
         NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> packingBoy.park(new Car()));
@@ -52,8 +52,8 @@ public class ParkingBoyTest {
     @Test
     void should_throw_Unrecognized_parking_ticket_exception_when_fetch_a_car_given_a_wrong_ticket() {
         //given
-        PackingLot packingLot = new PackingLot(0);
-        ParkingBoy packingBoy = new ParkingBoy(packingLot);
+        ParkingLot parkingLot = new ParkingLot(0);
+        ParkingBoy packingBoy = new ParkingBoy(parkingLot);
 
         //when
         UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, () -> packingBoy.fetch(new Ticket()));

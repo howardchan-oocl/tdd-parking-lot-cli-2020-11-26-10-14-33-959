@@ -3,11 +3,11 @@ package com.oocl.cultivation;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PackingLot {
+public class ParkingLot {
     private final int capacity;
     private Map<Ticket, Car> ticketCarMap;
 
-    public PackingLot(int capacity) {
+    public ParkingLot(int capacity) {
         this.capacity = capacity;
         ticketCarMap = new HashMap<>();
     }

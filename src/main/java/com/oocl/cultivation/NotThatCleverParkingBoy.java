@@ -2,7 +2,7 @@ package com.oocl.cultivation;
 
 import java.util.List;
 
-public class NotThatCleverParkingBoy {
+public class NotThatCleverParkingBoy extends ParkingBoy{
     private final List<ParkingLot> parkingLots;
 
     public NotThatCleverParkingBoy(List<ParkingLot> parkingLots) {

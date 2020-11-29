@@ -2,7 +2,7 @@ package com.oocl.cultivation;
 
 import java.util.List;
 
-public class SmartParkingBoy {
+public class SmartParkingBoy extends ParkingBoy{
     private final List<ParkingLot> parkingLots;
 
     public SmartParkingBoy(List<ParkingLot> parkingLots) {

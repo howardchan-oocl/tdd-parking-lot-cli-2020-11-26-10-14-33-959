@@ -73,14 +73,11 @@ public class NotThatCleverParkingBoyTest {
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
         NotThatCleverParkingBoy notThatCleverParkingBoy = new NotThatCleverParkingBoy(parkingLots);
-        Car actual = new Car();
-        Ticket ticket = null;
-
 
         //when
-        Car expected = notThatCleverParkingBoy.fetch(ticket);
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, () -> notThatCleverParkingBoy.fetch(new Ticket()));
 
         //then
-        assertEquals(expected, actual);
+        assertEquals("Unrecognized Parking Ticket", unrecognizedParkingTicketException.getMessage());
     }
 }

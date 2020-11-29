@@ -34,6 +34,10 @@ public class NotThatCleverParkingBoy {
             }
         }
 
+        if (car == null) {
+            throw new UnrecognizedParkingTicketException();
+        }
+
         return car;
     }
 }

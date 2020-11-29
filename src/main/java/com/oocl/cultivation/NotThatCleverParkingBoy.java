@@ -18,6 +18,10 @@ public class NotThatCleverParkingBoy {
             }
         }
 
+        if (ticket == null) {
+            throw new NotEnoughPositionException();
+        }
+
         return ticket;
     }
 

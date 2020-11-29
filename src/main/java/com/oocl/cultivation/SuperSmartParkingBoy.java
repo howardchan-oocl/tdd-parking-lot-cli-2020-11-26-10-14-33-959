@@ -19,7 +19,18 @@ public class SuperSmartParkingBoy {
         return ticket;
     }
 
-    public Car fetch(Ticket ticket) {
-        return null;
-    }
+    public Car fetch(Ticket ticket) throws UnrecognizedParkingTicketException {
+        Car car = null;
+
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.IsTicketValid(ticket)) {
+                car = parkingLot.fetch(ticket);
+            }
+        }
+
+        if (car == null) {
+            throw new UnrecognizedParkingTicketException();
+        }
+
+        return car;    }
 }

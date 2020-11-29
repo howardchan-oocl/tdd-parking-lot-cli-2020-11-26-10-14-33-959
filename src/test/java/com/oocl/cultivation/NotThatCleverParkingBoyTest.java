@@ -61,6 +61,26 @@ public class NotThatCleverParkingBoyTest {
         Car expected = notThatCleverParkingBoy.fetch(ticket);
 
         //then
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void should_throw_UnrecognizedParkingTicketException_that_fetch_a_car_by_an_invalid_ticket() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot(0);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        NotThatCleverParkingBoy notThatCleverParkingBoy = new NotThatCleverParkingBoy(parkingLots);
+        Car actual = new Car();
+        Ticket ticket = null;
+
+
+        //when
+        Car expected = notThatCleverParkingBoy.fetch(ticket);
+
+        //then
+        assertEquals(expected, actual);
     }
 }

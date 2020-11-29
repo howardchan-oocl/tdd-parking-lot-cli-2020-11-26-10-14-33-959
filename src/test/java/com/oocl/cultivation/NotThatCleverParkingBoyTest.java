@@ -27,7 +27,7 @@ public class NotThatCleverParkingBoyTest {
     }
 
     @Test
-    void should_throw_NotEnoughPositionException_when_call_park_car_with_no_parking_lot_with_enough_position() throws NotEnoughPositionException {
+    void should_throw_NotEnoughPositionException_when_call_park_car_with_no_parking_lot_with_enough_position() {
         //given
         List<ParkingLot> parkingLots = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot(0);
@@ -65,7 +65,7 @@ public class NotThatCleverParkingBoyTest {
     }
 
     @Test
-    void should_throw_UnrecognizedParkingTicketException_that_fetch_a_car_by_an_invalid_ticket() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
+    void should_throw_UnrecognizedParkingTicketException_that_fetch_a_car_by_an_invalid_ticket() {
         //given
         List<ParkingLot> parkingLots = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot(0);

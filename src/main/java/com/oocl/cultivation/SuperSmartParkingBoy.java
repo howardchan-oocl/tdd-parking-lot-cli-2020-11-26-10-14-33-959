@@ -18,4 +18,8 @@ public class SuperSmartParkingBoy {
 
         return ticket;
     }
+
+    public Car fetch(Ticket ticket) {
+        return null;
+    }
 }

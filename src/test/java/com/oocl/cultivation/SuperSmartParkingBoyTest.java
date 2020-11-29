@@ -43,4 +43,24 @@ public class SuperSmartParkingBoyTest {
         //then
         assertEquals("Not Enough Position", notEnoughPositionException.getMessage());
     }
+
+    @Test
+    void should_return_a_correct_car_when_call_fetch_car() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot(0);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
+        Car actual = new Car();
+        Ticket ticket = superSmartParkingBoy.park(actual);
+
+
+        //when
+        Car expected = superSmartParkingBoy.fetch(ticket);
+
+        //then
+        assertEquals(expected, actual);
+    }
 }

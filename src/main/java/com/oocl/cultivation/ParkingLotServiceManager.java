@@ -13,4 +13,8 @@ public class ParkingLotServiceManager extends NotThatCleverParkingBoy{
     public Ticket assignParkingBoyToPark(int parkingBoyIndex, Car car) throws NotEnoughPositionException {
         return parkingBoys.get(parkingBoyIndex).park(car);
     }
+
+    public Car assignParkingBoyToPark(int parkingBoyIndex, Ticket ticket) throws UnrecognizedParkingTicketException {
+        return parkingBoys.get(parkingBoyIndex).fetch(ticket);
+    }
 }

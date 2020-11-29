@@ -94,7 +94,8 @@ public class ParkingLotServiceManagerTest {
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
         List<ParkingBoy> parkingBoys = new ArrayList<>();
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkingLot3 = new ParkingLot(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot3);
         parkingBoys.add(parkingBoy);
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, parkingBoys);
 

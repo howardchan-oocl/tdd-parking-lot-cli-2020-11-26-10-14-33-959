@@ -22,7 +22,7 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) throws UnrecognizedParkingTicketException {
-        if (!ticketCarMap.containsKey(ticket)) {
+        if (!IsTicketValid(ticket)) {
             throw new UnrecognizedParkingTicketException();
         }
         return ticketCarMap.remove(ticket);
@@ -30,5 +30,9 @@ public class ParkingLot {
 
     public int getRemainSpace() {
         return capacity - ticketCarMap.size();
+    }
+
+    public boolean IsTicketValid(Ticket ticket) {
+        return ticketCarMap.containsKey(ticket);
     }
 }

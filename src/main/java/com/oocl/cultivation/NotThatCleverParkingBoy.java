@@ -26,7 +26,14 @@ public class NotThatCleverParkingBoy {
     }
 
     public Car fetch(Ticket ticket) throws UnrecognizedParkingTicketException {
-        //return packingLot.fetch(ticket);
-        return null;
+        Car car = null;
+
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.IsTicketValid(ticket)) {
+                car = parkingLot.fetch(ticket);
+            }
+        }
+
+        return car;
     }
 }

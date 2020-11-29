@@ -10,6 +10,12 @@ public class SuperSmartParkingBoy {
     }
 
     public Ticket park(Car car) throws NotEnoughPositionException {
-        return null;
+        Ticket ticket;
+
+        ParkingLot parkingLot = parkingLots.stream().reduce(parkingLots.get(0), (a,b)->(a.getAvailablePositionRate()>b.getAvailablePositionRate())?a:b);
+
+        ticket = parkingLot.park(car);
+
+        return ticket;
     }
 }

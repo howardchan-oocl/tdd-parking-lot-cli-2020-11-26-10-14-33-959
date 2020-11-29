@@ -35,4 +35,8 @@ public class ParkingLot {
     public boolean IsTicketValid(Ticket ticket) {
         return ticketCarMap.containsKey(ticket);
     }
+
+    public double getAvailablePositionRate() {
+        return (double) getRemainSpace()/capacity;
+    }
 }

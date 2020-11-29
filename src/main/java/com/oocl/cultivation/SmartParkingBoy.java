@@ -10,7 +10,11 @@ public class SmartParkingBoy {
     }
 
     public Ticket park(Car car) throws NotEnoughPositionException {
-        Ticket ticket = null;
+        Ticket ticket;
+
+        ParkingLot parkingLot = parkingLots.stream().reduce(parkingLots.get(0), (a,b)->(a.getRemainSpace()>b.getRemainSpace()?a:b));
+
+        ticket = parkingLot.park(car);
 
         return ticket;
     }

@@ -27,4 +27,8 @@ public class ParkingLot {
         }
         return ticketCarMap.remove(ticket);
     }
+
+    public int getRemainSpace() {
+        return capacity - ticketCarMap.size();
+    }
 }

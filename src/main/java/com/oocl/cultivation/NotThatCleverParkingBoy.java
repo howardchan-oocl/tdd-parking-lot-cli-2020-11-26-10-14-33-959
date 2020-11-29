@@ -10,8 +10,19 @@ public class NotThatCleverParkingBoy {
     }
 
     public Ticket park(Car car) throws NotEnoughPositionException {
-        //return packingLot.park(car);
-        return null;
+        Ticket ticket = null;
+
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.getRemainSpace() > 0) {
+                ticket = parkingLot.park(car);
+            }
+        }
+
+        if (ticket == null) {
+            throw new NotEnoughPositionException();
+        }
+
+        return ticket;
     }
 
     public Car fetch(Ticket ticket) throws UnrecognizedParkingTicketException {

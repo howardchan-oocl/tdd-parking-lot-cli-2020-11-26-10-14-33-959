@@ -3,7 +3,7 @@ package com.oocl.cultivation;
 import java.util.List;
 
 public class NotThatCleverParkingBoy {
-    public final List<ParkingLot> parkingLots;
+    protected final List<ParkingLot> parkingLots;
 
     public NotThatCleverParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;

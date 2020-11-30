@@ -25,7 +25,6 @@ public class NotThatCleverParkingBoy {
         for (ParkingLot parkingLot : parkingLots) {
             if (parkingLot.IsTicketValid(ticket)) {
                 return parkingLot.fetch(ticket);
-
             }
         }
 

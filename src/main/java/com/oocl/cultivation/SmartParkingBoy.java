@@ -2,11 +2,10 @@ package com.oocl.cultivation;
 
 import java.util.List;
 
-public class SmartParkingBoy extends ParkingBoy{
-    private final List<ParkingLot> parkingLots;
+public class SmartParkingBoy extends NotThatCleverParkingBoy {
 
     public SmartParkingBoy(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
+        super(parkingLots);
     }
 
     public Ticket park(Car car) throws NotEnoughPositionException {

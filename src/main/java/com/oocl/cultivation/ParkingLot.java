@@ -37,6 +37,8 @@ public class ParkingLot {
     }
 
     public double getAvailablePositionRate() {
-        return (double) getRemainSpace()/capacity;
+        if (capacity == 0)
+            return 0;
+        return (double) getRemainSpace() / capacity;
     }
 }

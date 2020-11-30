@@ -16,8 +16,8 @@ public class ParkingLotServiceManagerTest {
         ParkingLot parkingLot2 = new ParkingLot(1);
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        List<ParkingBoy> parkingBoys = new ArrayList<>();
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, parkingBoys);
+        List<NotThatCleverParkingBoy> notThatCleverParkingBoys = new ArrayList<>();
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, notThatCleverParkingBoys);
         Car car = new Car();
 
         //when
@@ -35,8 +35,8 @@ public class ParkingLotServiceManagerTest {
         ParkingLot parkingLot2 = new ParkingLot(0);
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        List<ParkingBoy> parkingBoys = new ArrayList<>();
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, parkingBoys);
+        List<NotThatCleverParkingBoy> notThatCleverParkingBoys = new ArrayList<>();
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, notThatCleverParkingBoys);
         Car car = new Car();
 
         //when
@@ -54,8 +54,8 @@ public class ParkingLotServiceManagerTest {
         ParkingLot parkingLot2 = new ParkingLot(1);
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        List<ParkingBoy> parkingBoys = new ArrayList<>();
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, parkingBoys);
+        List<NotThatCleverParkingBoy> notThatCleverParkingBoys = new ArrayList<>();
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, notThatCleverParkingBoys);
         Car actual = new Car();
         Ticket ticket = parkingLotServiceManager.park(actual);
 
@@ -75,8 +75,8 @@ public class ParkingLotServiceManagerTest {
         ParkingLot parkingLot2 = new ParkingLot(1);
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        List<ParkingBoy> parkingBoys = new ArrayList<>();
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, parkingBoys);
+        List<NotThatCleverParkingBoy> notThatCleverParkingBoys = new ArrayList<>();
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, notThatCleverParkingBoys);
 
         //when
         UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLotServiceManager.fetch(new Ticket()));
@@ -93,11 +93,15 @@ public class ParkingLotServiceManagerTest {
         ParkingLot parkingLot2 = new ParkingLot(1);
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        List<ParkingBoy> parkingBoys = new ArrayList<>();
+
+        List<ParkingLot> parkingLots2 = new ArrayList<>();
         ParkingLot parkingLot3 = new ParkingLot(1);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot3);
-        parkingBoys.add(parkingBoy);
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, parkingBoys);
+        parkingLots2.add(parkingLot3);
+        NotThatCleverParkingBoy notThatCleverParkingBoy = new NotThatCleverParkingBoy(parkingLots2);
+
+        List<NotThatCleverParkingBoy> notThatCleverParkingBoys = new ArrayList<>();
+        notThatCleverParkingBoys.add(notThatCleverParkingBoy);
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, notThatCleverParkingBoys);
 
         //when
         Ticket ticket = parkingLotServiceManager.assignParkingBoyToPark(0, new Car());
@@ -114,11 +118,15 @@ public class ParkingLotServiceManagerTest {
         ParkingLot parkingLot2 = new ParkingLot(1);
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        List<ParkingBoy> parkingBoys = new ArrayList<>();
+
+        List<ParkingLot> parkingLots2 = new ArrayList<>();
         ParkingLot parkingLot3 = new ParkingLot(0);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot3);
-        parkingBoys.add(parkingBoy);
-        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, parkingBoys);
+        parkingLots2.add(parkingLot3);
+        NotThatCleverParkingBoy notThatCleverParkingBoy = new NotThatCleverParkingBoy(parkingLots2);
+
+        List<NotThatCleverParkingBoy> notThatCleverParkingBoys = new ArrayList<>();
+        notThatCleverParkingBoys.add(notThatCleverParkingBoy);
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager(parkingLots, notThatCleverParkingBoys);
 
         //when
         NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> parkingLotServiceManager.assignParkingBoyToPark(0,new Car()));

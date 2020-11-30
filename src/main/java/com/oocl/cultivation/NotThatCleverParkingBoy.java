@@ -2,42 +2,33 @@ package com.oocl.cultivation;
 
 import java.util.List;
 
-public class NotThatCleverParkingBoy extends ParkingBoy{
-    private final List<ParkingLot> parkingLots;
+public class NotThatCleverParkingBoy {
+    public final List<ParkingLot> parkingLots;
 
     public NotThatCleverParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 
     public Ticket park(Car car) throws NotEnoughPositionException {
-        Ticket ticket = null;
-
         for (ParkingLot parkingLot : parkingLots) {
             if (parkingLot.getRemainSpace() > 0) {
-                ticket = parkingLot.park(car);
+                Ticket ticket = parkingLot.park(car);
+                if (ticket != null)
+                    return ticket;
             }
         }
 
-        if (ticket == null) {
-            throw new NotEnoughPositionException();
-        }
-
-        return ticket;
+        throw new NotEnoughPositionException();
     }
 
     public Car fetch(Ticket ticket) throws UnrecognizedParkingTicketException {
-        Car car = null;
-
         for (ParkingLot parkingLot : parkingLots) {
             if (parkingLot.IsTicketValid(ticket)) {
-                car = parkingLot.fetch(ticket);
+                return parkingLot.fetch(ticket);
+
             }
         }
 
-        if (car == null) {
-            throw new UnrecognizedParkingTicketException();
-        }
-
-        return car;
+        throw new UnrecognizedParkingTicketException();
     }
 }

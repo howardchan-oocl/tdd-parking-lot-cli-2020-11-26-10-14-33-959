@@ -10,24 +10,20 @@ public class NotThatCleverParkingBoy {
     }
 
     public Ticket park(Car car) throws NotEnoughPositionException {
-        for (ParkingLot parkingLot : parkingLots) {
-            if (parkingLot.getRemainSpace() > 0) {
-                Ticket ticket = parkingLot.park(car);
-                if (ticket != null)
-                    return ticket;
-            }
-        }
-
-        throw new NotEnoughPositionException();
+        return parkingLots.stream().filter(parkingLot -> parkingLot.getRemainSpace() > 0).findFirst().orElseThrow(NotEnoughPositionException::new).park(car);
     }
 
     public Car fetch(Ticket ticket) throws UnrecognizedParkingTicketException {
-        for (ParkingLot parkingLot : parkingLots) {
-            if (parkingLot.IsTicketValid(ticket)) {
-                return parkingLot.fetch(ticket);
-            }
-        }
+        return parkingLots.stream().filter(parkingLot -> parkingLot.IsTicketValid(ticket)).findFirst().orElseThrow(UnrecognizedParkingTicketException::new).fetch(ticket);
+    }
 
-        throw new UnrecognizedParkingTicketException();
+    public boolean canPark() {
+        ParkingLot parkingLot = parkingLots.stream().filter(p -> p.getRemainSpace() > 0).findFirst().orElse(null);
+        return parkingLot != null;
+    }
+
+    public boolean canFetch(Ticket ticket) {
+        ParkingLot parkingLot = parkingLots.stream().filter(p -> p.IsTicketValid(ticket)).findFirst().orElse(null);
+        return parkingLot != null;
     }
 }

@@ -1,21 +1,25 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingLotServiceManager extends NotThatCleverParkingBoy {
-    private final List<NotThatCleverParkingBoy> notThatCleverParkingBoys;
+    private final List<NotThatCleverParkingBoy> parkingBoys;
 
-    public ParkingLotServiceManager(List<ParkingLot> parkingLots, List<NotThatCleverParkingBoy> notThatCleverParkingBoys) {
+    public ParkingLotServiceManager(List<ParkingLot> parkingLots) {
         super(parkingLots);
-        this.notThatCleverParkingBoys = notThatCleverParkingBoys;
+        parkingBoys = new ArrayList<>();
     }
 
-    //todo remove index and let manager get the first boy to do operation
-    public Ticket assignParkingBoyToPark(int parkingBoyIndex, Car car) throws NotEnoughPositionException {
-        return notThatCleverParkingBoys.get(parkingBoyIndex).park(car);
+    public void addParkingBoy(NotThatCleverParkingBoy parkingBoy) {
+        parkingBoys.add(parkingBoy);
     }
 
-    public Car assignParkingBoyToFetch(int parkingBoyIndex, Ticket ticket) throws UnrecognizedParkingTicketException {
-        return notThatCleverParkingBoys.get(parkingBoyIndex).fetch(ticket);
+    public Ticket assignParkingBoyToPark(Car car) throws NotEnoughPositionException {
+        return parkingBoys.stream().filter(NotThatCleverParkingBoy::canPark).findFirst().orElseThrow(NotEnoughPositionException::new).park(car);
+    }
+
+    public Car assignParkingBoyToFetch(Ticket ticket) throws UnrecognizedParkingTicketException {
+        return parkingBoys.stream().filter(parkingBoy -> parkingBoy.canFetch(ticket)).findFirst().orElseThrow(UnrecognizedParkingTicketException::new).fetch(ticket);
     }
 }

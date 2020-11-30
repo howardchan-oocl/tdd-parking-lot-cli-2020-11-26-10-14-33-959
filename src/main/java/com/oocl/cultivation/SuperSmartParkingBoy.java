@@ -13,4 +13,9 @@ public class SuperSmartParkingBoy extends NotThatCleverParkingBoy {
 
         return parkingLot.park(car);
     }
+
+    public boolean canPark() {
+        ParkingLot parkingLot = parkingLots.stream().reduce(parkingLots.get(0), (a, b) -> (a.getAvailablePositionRate() > b.getAvailablePositionRate() ? a : b));
+        return parkingLot.getRemainSpace() != 0;
+    }
 }
